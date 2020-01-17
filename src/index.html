@@ -24,7 +24,7 @@
         </nav>
 
         <div class="container-fluid flex-grow-1">
-            <div class="row justify-content-around h-100 align-content-center">
+            <div class="row justify-content-around h-100 align-items-center">
 
                 <div class="col-5 image-c">
                     <div class="card text-center">
@@ -46,13 +46,13 @@
                 </div>
 
                 <div class="col-5 cluster">
-                    <div class="card">
+                    <div class="card" style="height: 500px;">
                         <div class="card-header">
                             <label for="customRange2">Clusters: <span>5</span></label>
                             <input type="range" class="custom-range" min="5" max="25" id="customRange2">
                         </div>
-                        <div class="card-body">
-
+                        <div class="card-body text-center">
+                            <div class="h-100 w-100" id="chart-container"></div>
                         </div>
                         <div class="card-footer">
                             <div class="colors">
