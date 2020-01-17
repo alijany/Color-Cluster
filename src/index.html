@@ -13,6 +13,62 @@
 
 <body>
 
+
+
+    <div class="d-flex flex-column vh-100">
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="./assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="CC">
+                Color Cluster
+            </a>
+        </nav>
+
+        <div class="container-fluid flex-grow-1">
+            <div class="row justify-content-around h-100 align-content-center">
+
+                <div class="col-5 image-c">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#">Image</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" Clustered>Reduced</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <img src="./assets/Asset1.png" class="rounded mx-auto d-block" alt="upload">
+                            <p class="card-text text-secondary"><strong>Choose an image</strong> or drag it here</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-5 cluster">
+                    <div class="card">
+                        <div class="card-header">
+                            <label for="customRange2">Clusters: <span>5</span></label>
+                            <input type="range" class="custom-range" min="5" max="25" id="customRange2">
+                        </div>
+                        <div class="card-body">
+
+                        </div>
+                        <div class="card-footer">
+                            <div class="colors">
+                                <!-- temp list -->
+                                <div class="color"></div>
+                                <div class="color"></div>
+                                <div class="color"></div>
+                                <div class="color"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
