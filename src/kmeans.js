@@ -40,7 +40,7 @@ export function randomCluster() {
         let y = vertexes[index].pos.y;
         let z = vertexes[index].pos.z;
 
-        let color = `rgb(${x + 127},${y + 127},${z + 127})`
+        let color = `rgb(${x + 127},${y + 127},${z + 127})`;
 
         clusters.push({
             pos: new THREE.Vector3(x, y, z),
