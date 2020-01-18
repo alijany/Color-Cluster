@@ -25,11 +25,14 @@ import 'bootstrap/js/dist/tab';
 let originalImage = new Image();
 function imageOnload() {
     let canvas = document.getElementById('original-canvas');
-    canvas.width = $('.tab-content').width();
-    canvas.height = $('.tab-content').height();
+    let width = $('.tab-content').width();
+    let height = width / originalImage.width * originalImage.height;
+
+    canvas.width = width;
+    canvas.height = height;
 
     let context = canvas.getContext('2d');
-    context.drawImage(originalImage, 0, 0);
+    context.drawImage(originalImage, 0, 0, originalImage.width, originalImage.height, 0, 0, width, height);
 
     $('#image-tab').tab('show');
     $('#drop_zone').hide();
