@@ -46,4 +46,10 @@ $('#drop_zone').on('dragover', function (event) {
 
 $('#drop_zone').on('dragenter', function (event) {
     event.preventDefault();
+    $(event.target).css('background-color', '#f7f7f7');
+});
+
+$('#drop_zone').on('dragexit', function (event) {
+    event.preventDefault();
+    $(event.target).css('background-color', '#fff');
 });
