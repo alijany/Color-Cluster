@@ -32,6 +32,8 @@ function imageOnload() {
     context.drawImage(originalImage, 0, 0);
 
     $('#image-tab').tab('show');
+    $('#drop_zone').hide();
+    $('#upload').show();
     // imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 }
 
