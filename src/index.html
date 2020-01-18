@@ -29,18 +29,29 @@
                 <div class="col-5 image-c">
                     <div class="card text-center">
                         <div class="card-header">
-                            <ul class="nav nav-tabs card-header-tabs">
+                            <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#">Image</a>
+                                    <a class="nav-link" id="image-tab" data-toggle="tab" href="#image" role="tab"
+                                        aria-controls="home" aria-selected="true">Image</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" Clustered>Reduced</a>
+                                    <a class="nav-link" id="reduced-tab" data-toggle="tab" href="#reduced" role="tab"
+                                        aria-controls="home" aria-selected="true">Reduced</a>
                                 </li>
                             </ul>
                         </div>
-                        <div id="drop_zone" class="card-body">
-                            <img src="./assets/Asset1.png" class="rounded mx-auto d-block" alt="upload">
-                            <p class="card-text text-secondary"><strong>Choose an image</strong> or drag it here</p>
+                        <div class="card-body tab-content">
+                            <div id="drop_zone" class="tab-pane show active" id="upload" role="tabpanel"
+                                aria-labelledby="upload-tab">
+                                <img src="./assets/Asset1.png" class="rounded mx-auto d-block" alt="upload">
+                                <p class="card-text text-secondary"><strong>Choose an image</strong> or drag it here</p>
+                            </div>
+                            <div class="tab-pane fade" id="image" role="tabpanel" aria-labelledby="image-tab">
+                                <canvas id="original-canvas"></canvas>
+                            </div>
+                            <div class="tab-pane fade" id="reduced" role="tabpanel" aria-labelledby="reduced-tab">
+                                reduced
+                            </div>
                         </div>
                     </div>
                 </div>
