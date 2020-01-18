@@ -46,7 +46,7 @@ reader.addEventListener('load', function (event) {
     originalImage.src = event.target.result;
 });
 
-$('#drop_zone').on('drop', function (event) {
+$('.drop_zone').on('drop', function (event) {
     event.preventDefault();
     event.dataTransfer = event.originalEvent.dataTransfer;
     let file;
@@ -57,16 +57,26 @@ $('#drop_zone').on('drop', function (event) {
     reader.readAsDataURL(file);
 });
 
-$('#drop_zone').on('dragover', function (event) {
+$('.drop_zone').on('dragover', function (event) {
     event.preventDefault();
 });
 
-$('#drop_zone').on('dragenter', function (event) {
+var dragging = 0;
+$('.drop_zone').on('dragenter', function (event) {
+    dragging++;
+    $('.drop_zone').css('background-color', '#f7f7f7');
+
+    event.stopPropagation();
     event.preventDefault();
-    $(event.target).css('background-color', '#f7f7f7');
+    return false;
 });
 
-$('#drop_zone').on('dragexit', function (event) {
+$('.drop_zone').on('dragleave dragexit', function (event) {
+    dragging--;
+    if (dragging === 0)
+        $('.drop_zone').css('background-color', '#fff');
+
+    event.stopPropagation();
     event.preventDefault();
-    $(event.target).css('background-color', '#fff');
+    return false;
 });
