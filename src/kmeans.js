@@ -97,11 +97,12 @@ function updateCentroid() {
         clusters[i].sum = new THREE.Vector3(0, 0, 0);
         clusters[i].dataCount = 0;
         // update color whit pos
-        let rgb = clusters[i].pos;
-        let red = Math.floor(rgb.x + 127);
-        let green = Math.floor(rgb.y + 127);
-        let blue = Math.floor(rgb.z + 127);
-        clusters[i].color = 'rgb(' + red + ',' + green + ',' + blue + ')';
+        let x = Math.floor(clusters[i].pos.x) + 127;
+        let y = Math.floor(clusters[i].pos.y) + 127;
+        let z = Math.floor(clusters[i].pos.z) + 127;
+        let rgb = `rgb(${x},${y},${z})`;
+        clusters[i].color = rgb;
+        clusters[i].label.css('background-color', rgb);
     }
 }
 

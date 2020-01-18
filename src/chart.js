@@ -93,6 +93,7 @@ export function initChart(imageData) {
 
 function draw() {
     removeFromScene(4);
+    colors = clusters.map(a => a.color);
     addPoints(clusters.map(a => a.pos), colors);
     for (let i = 0; i < vertexes.length; i++) {
         setPointColor(points, i, clusters[vertexes[i].cluster].color);
