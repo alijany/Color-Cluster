@@ -22,28 +22,33 @@ import 'bootstrap/js/dist/tab';
 //let runWorker;
 //createWorker();
 
-let originalImage = new Image();
+// load dropped image to canvas ----------------------
+
+let image = new Image();
+let imageData;
 function imageOnload() {
     let canvas = document.getElementById('original-canvas');
+    // calc scale
     let width = $('.tab-content').width();
-    let height = width / originalImage.width * originalImage.height;
-
+    let height = width / image.width * image.height;
+    // draw image
     canvas.width = width;
     canvas.height = height;
-
     let context = canvas.getContext('2d');
-    context.drawImage(originalImage, 0, 0, originalImage.width, originalImage.height, 0, 0, width, height);
-
+    context.drawImage(image, 0, 0, image.width, image.height, 0, 0, width, height);
+    // display canvas
     $('#image-tab').tab('show');
     $('#drop_zone').hide();
     $('#upload').show();
-    // imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    imageData = context.getImageData(0, 0, canvas.width, canvas.height);
 }
+
+// drop zone file handler ---------------------------- 
 
 let reader = new FileReader();
 reader.addEventListener('load', function (event) {
-    originalImage.onload = imageOnload;
-    originalImage.src = event.target.result;
+    image.onload = imageOnload;
+    image.src = event.target.result;
 });
 
 $('.drop_zone').on('drop', function (event) {
@@ -60,6 +65,8 @@ $('.drop_zone').on('drop', function (event) {
 $('.drop_zone').on('dragover', function (event) {
     event.preventDefault();
 });
+
+// drop zone hover effect -----------------------------
 
 var dragging = 0;
 $('.drop_zone').on('dragenter', function (event) {
