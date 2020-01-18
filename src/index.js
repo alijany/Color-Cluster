@@ -90,12 +90,20 @@ $('.drop_zone').on('dragleave dragexit', function (event) {
 // cluster slider ------------------------------------
 export let clusterCount = 12; // default
 let clusterLabel = $('#clusters');
+import { randomCluster } from './kmeans';
 
-$('#cluster-slider').on('input',function (event) {
+$('#cluster-slider').on('input', function (event) {
     clusterCount = event.target.value;
     clusterLabel.html(clusterCount);
 });
 
-$('#cluster-slider').on('change',function () {
-    console.log(clusterCount);
-});
+$('#cluster-slider').on('change', randomCluster);
+
+
+export function appendLabels(labels){
+    let $color = $('.colors');
+    $color.text('');
+    labels.forEach(label => {
+        $color.append(label);
+    });
+}

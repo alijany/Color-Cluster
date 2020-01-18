@@ -1,5 +1,5 @@
 let THREE = require('three');
-import {clusterCount} from './index.js';
+import { clusterCount, appendLabels } from './index.js';
 
 export let vertexes = [];
 export let clusters = [];
@@ -8,6 +8,8 @@ let step_Num = 0;
 // eslint-disable-next-line no-unused-vars
 let lastChange = 0;
 
+
+// ------------------------------------------------------------
 
 function imageDataToVertexes(imageData) {
     vertexes = [];
@@ -38,24 +40,26 @@ export function randomCluster() {
         let y = vertexes[index].pos.y;
         let z = vertexes[index].pos.z;
 
-        let red = x + 127;
-        let green = y + 127;
-        let blue = z + 127;
+        let color = `rgb(${x + 127},${y + 127},${z + 127})`
 
         clusters.push({
             pos: new THREE.Vector3(x, y, z),
             sum: new THREE.Vector3(0, 0, 0),
             dataCount: 0,
-
-            color: 'rgb(' + red + ',' + green + ',' + blue + ')'
+            label : $('<div></div>').addClass('color').css('background-color', color),
+            color: color
         });
     }
+
+    appendLabels(clusters.map(c => c.label));
 }
 
 export function initKmeans(imageData) {
     imageDataToVertexes(imageData);
     randomCluster();
 }
+
+// ------------------------------------------------------------
 
 function choseClusters() {
     for (let i = 0; i < vertexes.length; i++) {
@@ -100,6 +104,8 @@ function updateCentroid() {
         clusters[i].color = 'rgb(' + red + ',' + green + ',' + blue + ')';
     }
 }
+
+// ------------------------------------------------------------
 
 export function runKmeans(draw) {
     let loop = setInterval(() => {
