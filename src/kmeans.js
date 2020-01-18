@@ -31,7 +31,7 @@ function imageDataToVertexes(imageData) {
 }
 
 export function randomCluster() {
-    let clusters = [];
+    clusters = [];
 
     for (let i = 0; i < clusterCount; i++) {
         let index = Math.floor(Math.random() * (vertexes.length - 1));
@@ -46,7 +46,7 @@ export function randomCluster() {
             pos: new THREE.Vector3(x, y, z),
             sum: new THREE.Vector3(0, 0, 0),
             dataCount: 0,
-            label : $('<div></div>').addClass('color').css('background-color', color),
+            label: $('<div></div>').addClass('color').css('background-color', color),
             color: color
         });
     }
@@ -116,6 +116,10 @@ export function runKmeans(draw) {
             updateCentroid();
             draw();
         }
-        else clearInterval(loop);
+        else {
+            step_Num = 0;
+            lastChange = 0;
+            clearInterval(loop);
+        }
     }, 100);
 }

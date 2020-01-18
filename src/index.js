@@ -100,10 +100,16 @@ $('#cluster-slider').on('input', function (event) {
 $('#cluster-slider').on('change', randomCluster);
 
 
-export function appendLabels(labels){
+export function appendLabels(labels) {
     let $color = $('.colors');
     $color.text('');
     labels.forEach(label => {
         $color.append(label);
     });
 }
+
+// ----------------------------------------------------
+import { run } from './chart';
+$('#run').on('click', function () {
+    run();
+});
