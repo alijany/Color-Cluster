@@ -19,5 +19,31 @@ import './chart.js';
 // }
 // ***************************
 
-//var runWorker;
+//let runWorker;
 //createWorker();
+
+let preview = new Image();
+
+let reader = new FileReader();
+reader.addEventListener('load', function (event) {
+    preview.src = event.target.result;
+});
+
+$('#drop_zone').on('drop', function (event) {
+    event.preventDefault();
+    event.dataTransfer = event.originalEvent.dataTransfer;
+    let file;
+    if (event.dataTransfer.items)
+        file = event.dataTransfer.items[0].getAsFile();
+    else
+        file = event.dataTransfer.files[0].name;
+    reader.readAsDataURL(file);
+});
+
+$('#drop_zone').on('dragover', function (event) {
+    event.preventDefault();
+});
+
+$('#drop_zone').on('dragenter', function (event) {
+    event.preventDefault();
+});
