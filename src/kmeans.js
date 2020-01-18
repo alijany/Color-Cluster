@@ -1,8 +1,7 @@
 let THREE = require('three');
+import {clusterCount} from './index.js';
 
-export let data = [];
-
-let cluster_Num = 12;
+export let vertexes = [];
 export let clusters = [];
 
 let step_Num = 0;
@@ -10,8 +9,8 @@ let step_Num = 0;
 let lastChange = 0;
 
 
-export function imageDataToVertexes(imageData) {
-    data = [];
+function imageDataToVertexes(imageData) {
+    vertexes = [];
 
     for (let x = 0; x < imageData.width; x++) {
         for (let y = 0; y < imageData.height; y++) {
@@ -21,7 +20,7 @@ export function imageDataToVertexes(imageData) {
             let blue = imageData.data[index + 2];
             // let alpha = imageData.data[index + 3];
 
-            data.push({
+            vertexes.push({
                 pos: new THREE.Vector3(red - 127, green - 127, blue - 127),
                 color: 'rgb(' + red + ',' + green + ',' + blue + ')'
             });
@@ -32,12 +31,12 @@ export function imageDataToVertexes(imageData) {
 export function randomCluster() {
     let clusters = [];
 
-    for (let i = 0; i < cluster_Num; i++) {
-        let index = Math.floor(Math.random() * (data.length - 1));
+    for (let i = 0; i < clusterCount; i++) {
+        let index = Math.floor(Math.random() * (vertexes.length - 1));
 
-        let x = data[index].pos.x;
-        let y = data[index].pos.y;
-        let z = data[index].pos.z;
+        let x = vertexes[index].pos.x;
+        let y = vertexes[index].pos.y;
+        let z = vertexes[index].pos.z;
 
         let red = x + 127;
         let green = y + 127;
@@ -59,21 +58,21 @@ export function initKmeans(imageData) {
 }
 
 function choseClusters() {
-    for (let i = 0; i < data.length; i++) {
-        let minDistance = clusters[0].pos.distanceTo(data[i].pos);
+    for (let i = 0; i < vertexes.length; i++) {
+        let minDistance = clusters[0].pos.distanceTo(vertexes[i].pos);
         let minDistanceIndex = 0;
 
-        for (let j = 1; j < cluster_Num; j++) {
-            let distance = clusters[j].pos.distanceTo(data[i].pos);
+        for (let j = 1; j < clusterCount; j++) {
+            let distance = clusters[j].pos.distanceTo(vertexes[i].pos);
             if (distance < minDistance) {
                 minDistance = distance;
                 minDistanceIndex = j;
             }
         }
 
-        if (data[i].cluster != minDistanceIndex)
+        if (vertexes[i].cluster != minDistanceIndex)
             lastChange = step_Num;
-        data[i].cluster = minDistanceIndex;
+        vertexes[i].cluster = minDistanceIndex;
     }
 }
 
@@ -82,13 +81,13 @@ function updateCentroid() {
     // sum of each cluster points
     let i;
 
-    for (i = 0; i < data.length; i++) {
-        let index = data[i].cluster;
-        clusters[index].sum = clusters[index].sum.add(data[i].pos);
+    for (i = 0; i < vertexes.length; i++) {
+        let index = vertexes[i].cluster;
+        clusters[index].sum = clusters[index].sum.add(vertexes[i].pos);
         clusters[index].dataCount += 1;
     }
 
-    for (i = 0; i < cluster_Num; i++) {
+    for (i = 0; i < clusterCount; i++) {
         if (clusters[i].dataCount)
             clusters[i].pos = clusters[i].sum.divideScalar(clusters[i].dataCount);
         clusters[i].sum = new THREE.Vector3(0, 0, 0);

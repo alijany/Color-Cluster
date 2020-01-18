@@ -18,7 +18,7 @@ chart.appendChild(renderer.domElement);
 
 
 let colors, points;
-import { data, clusters, initKmeans, runKmeans } from './kmeans';
+import { vertexes, clusters, initKmeans, runKmeans } from './kmeans';
 
 // --------------------
 let img = new Image();
@@ -79,8 +79,8 @@ export function removeFromScene(i) {
 function initialize3D() {
     removeFromScene(3);
     // add data
-    colors = data.map(a => a.color);
-    points = addPoints(data.map(a => a.pos), colors);
+    colors = vertexes.map(a => a.color);
+    points = addPoints(vertexes.map(a => a.pos), colors);
     // add clusters
     colors = clusters.map(a => a.color);
     addPoints(clusters.map(a => a.pos), colors);
@@ -94,8 +94,8 @@ export function initChart(imageData) {
 function draw() {
     removeFromScene(4);
     addPoints(clusters.map(a => a.pos), colors);
-    for (let i = 0; i < data.length; i++) {
-        setPointColor(points, i, clusters[data[i].cluster].color);
+    for (let i = 0; i < vertexes.length; i++) {
+        setPointColor(points, i, clusters[vertexes[i].cluster].color);
     }
 }
 

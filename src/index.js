@@ -86,3 +86,16 @@ $('.drop_zone').on('dragleave dragexit', function (event) {
     event.preventDefault();
     return false;
 });
+
+// cluster slider ------------------------------------
+export let clusterCount = 12; // default
+let clusterLabel = $('#clusters');
+
+$('#cluster-slider').on('input',function (event) {
+    clusterCount = event.target.value;
+    clusterLabel.html(clusterCount);
+});
+
+$('#cluster-slider').on('change',function () {
+    console.log(clusterCount);
+});
