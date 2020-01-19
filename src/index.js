@@ -1,8 +1,10 @@
 import './style/costume.scss';
 import './chart.js';
 import { initChart } from './chart';
+import { clusters } from './kmeans';
 // import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tab';
+
 // import 'bootstrap/js/dist/collapse';
 
 // import RunWorker from './run.worker';
@@ -24,6 +26,8 @@ import 'bootstrap/js/dist/tab';
 
 let originalImage = new Image();
 let imageData;
+let reducedCanvas = document.getElementById('reduced-canvas');
+
 function imageOnload() {
     let canvas = document.getElementById('original-canvas');
     let width = $('.tab-content').width();
@@ -32,7 +36,13 @@ function imageOnload() {
     canvas.width = width;
     canvas.height = height;
 
+    reducedCanvas.width = width;
+    reducedCanvas.height = height;
+
     let context = canvas.getContext('2d');
+    context.drawImage(originalImage, 0, 0, originalImage.width, originalImage.height, 0, 0, width, height);
+    
+    context = reducedCanvas.getContext('2d');
     context.drawImage(originalImage, 0, 0, originalImage.width, originalImage.height, 0, 0, width, height);
 
     $('#image-tab').tab('show');
@@ -40,6 +50,26 @@ function imageOnload() {
     $('#upload').show();
     imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     initChart(imageData);
+}
+
+
+export function updateImage(vertexes) {
+    let i = 0;
+    for (let x = 0; x < imageData.width; x++) {
+        for (let y = 0; y < imageData.height; y++) {
+
+            let rgb = clusters[vertexes[i].cluster].pos;
+            i++;
+
+            let index = (y * imageData.width + x) * 4;
+            imageData.data[index] = rgb.x + 127;
+            imageData.data[index + 1] = rgb.y + 127;
+            imageData.data[index + 2] = rgb.z + 127;
+            imageData.data[index + 3] = 255;
+        }
+    }
+
+    reducedCanvas.getContext('2d').putImageData(imageData, 0, 0);
 }
 
 // file reader ---------------------------------------
@@ -101,6 +131,7 @@ $('.drop_zone').on('dragleave dragexit', function (event) {
 });
 
 // cluster slider ------------------------------------
+
 export let clusterCount = 12; // default
 let clusterLabel = $('#clusters');
 import { randomCluster } from './kmeans';
@@ -112,6 +143,7 @@ $('#cluster-slider').on('input', function (event) {
 
 $('#cluster-slider').on('change', randomCluster);
 
+// ---------------------------------------------------
 
 export function appendLabels(labels) {
     let $color = $('.colors');

@@ -90,6 +90,7 @@ module.exports = {
         // new CleanWebpackPlugin(),
         new webpack.ProvidePlugin({
             '$': 'jquery',
+            'jQuery': 'jquery',
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
