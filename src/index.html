@@ -31,36 +31,41 @@
                         <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="image-tab" data-toggle="tab" href="#image" role="tab"
-                                        aria-controls="image" aria-selected="true">image</a>
+                                    <a class="nav-link active" id="upload-tab" data-toggle="tab" href="#upload" role="tab"
+                                        aria-controls="upload" aria-selected="true">upload</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="reduced-tab" data-toggle="tab" href="#reduced" role="tab"
-                                        aria-controls="reduced" aria-selected="true">Reduced</a>
+                                    <a class="nav-link" id="image-tab" data-toggle="tab" href="#image" role="tab"
+                                        aria-controls="image" aria-selected="true">image</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="card-body tab-content text-center">
 
-                            <div class="tab-pane fade show active drop_zone" id="image" role="tabpanel"
-                                aria-labelledby="image-tab">
+                            <div class="tab-pane fade show active drop_zone" id="upload" role="tabpanel"
+                                aria-labelledby="upload-tab">
                                 <div id="drop_zone">
                                     <img src="./assets/Asset1.png" class="rounded mx-auto d-block" alt="upload">
                                     <p class="card-text text-secondary"><strong>Choose an image</strong> or drag it here
                                     </p>
                                 </div>
-                                <div id="upload" style="display: none;">
-                                    <canvas id="original-canvas"></canvas>
-                                </div>
                             </div>
 
-                            <div class="tab-pane fade" id="reduced" role="tabpanel" aria-labelledby="reduced-tab">
-                                <canvas id="reduced-canvas"></canvas>
+                            <div class="tab-pane fade" id="image" role="tabpanel" aria-labelledby="image-tab">
+                                <div class="slider">
+                                    <div class="slider responsive">
+                                        <div class="left image">
+                                            <canvas id="original-canvas"></canvas>
+                                        </div>
+                                        <div class="right image">
+                                            <canvas id="image-canvas"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
                         <div class="card-footer text-right">
-                            <button id="browse" type="button" class="btn btn-secondary">Browse</button>
                             <input id="file-input" type="file" style="display: none;" />
                             <button id="run" type="button" class="btn btn-primary">Run</button>
                         </div>

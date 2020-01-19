@@ -5,6 +5,9 @@ import { clusters } from './kmeans';
 // import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tab';
 
+import 'img-slider/distr/imgslider.min.js';
+$('.slider').slider({ instructionText: 'drag to compare' });
+
 // import 'bootstrap/js/dist/collapse';
 
 // import RunWorker from './run.worker';
@@ -26,7 +29,7 @@ import 'bootstrap/js/dist/tab';
 
 let originalImage = new Image();
 let imageData;
-let reducedCanvas = document.getElementById('reduced-canvas');
+let reducedCanvas = document.getElementById('image-canvas');
 
 function imageOnload() {
     let canvas = document.getElementById('original-canvas');
@@ -41,13 +44,12 @@ function imageOnload() {
 
     let context = canvas.getContext('2d');
     context.drawImage(originalImage, 0, 0, originalImage.width, originalImage.height, 0, 0, width, height);
-    
+
     context = reducedCanvas.getContext('2d');
     context.drawImage(originalImage, 0, 0, originalImage.width, originalImage.height, 0, 0, width, height);
 
     $('#image-tab').tab('show');
-    $('#drop_zone').hide();
-    $('#upload').show();
+
     imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     initChart(imageData);
 }
@@ -82,7 +84,7 @@ reader.addEventListener('load', function (event) {
 
 // file input ----------------------------------------
 
-$('#browse,.drop_zone').on('click', function () {
+$('.drop_zone').on('click', function () {
     $('#file-input').trigger('click');
 });
 
