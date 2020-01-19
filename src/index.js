@@ -42,13 +42,26 @@ function imageOnload() {
     initChart(imageData);
 }
 
-// drop zone file handler ---------------------------- 
+// file reader ---------------------------------------
 
 let reader = new FileReader();
 reader.addEventListener('load', function (event) {
     originalImage.onload = imageOnload;
     originalImage.src = event.target.result;
 });
+
+// file input ----------------------------------------
+
+$('#browse,.drop_zone').on('click', function () {
+    $('#file-input').trigger('click');
+});
+
+$('#file-input').on('change', function (event) {
+    let file = event.target.files[0];
+    reader.readAsDataURL(file);
+});
+
+// drop zone file handler ---------------------------- 
 
 $('.drop_zone').on('drop', function (event) {
     event.preventDefault();
@@ -109,6 +122,7 @@ export function appendLabels(labels) {
 }
 
 // ----------------------------------------------------
+
 import { run } from './chart';
 $('#run').on('click', function () {
     run();
