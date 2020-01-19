@@ -26,9 +26,6 @@
 
 @import "../../node_modules/bootstrap/scss/utilities";
 
-
-@import "../../node_modules/img-slider/distr/imgslider.min.css";
-
 .color {
     display: inline-block;
     height: 20px;
@@ -40,4 +37,44 @@
 
 .drop_zone {
     cursor: pointer;
+}
+
+// image slide  -------------------------------
+
+.slider {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    position: relative
+}
+
+.slider .right.image {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0
+}
+
+.slider .left.image {
+    position: relative;
+    z-index: 2;
+    border-right: 3px solid white;
+    margin-right: -5px;
+    overflow: hidden
+}
+
+.slider .instruction {
+    position: absolute;
+    top: 50%;
+    z-index: 1000;
+    width: 100%;
+}
+
+.slider .instruction p {
+    background: rgba(255, 255, 255, 0.75);
+    display: inline;
+    padding: 7px 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    text-transform: uppercase
 }
