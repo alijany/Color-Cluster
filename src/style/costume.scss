@@ -35,6 +35,11 @@
     margin: 5px;
 }
 
+.color:hover {
+   transform: scale(1.4);
+   transition: transform .3s cubic-bezier(.59,1.95,.38,.27);
+}
+
 .drop_zone {
     cursor: pointer;
 }
