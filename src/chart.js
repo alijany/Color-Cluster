@@ -17,7 +17,7 @@ let chart = document.getElementById('chart-container');
 chart.appendChild(renderer.domElement);
 
 
-let colors, points;
+let points;
 import { vertexes, clusters, initKmeans, runKmeans } from './kmeans';
 import { updateImage } from './index';
 // --------------------
@@ -27,11 +27,10 @@ img.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAA
 // -------------------
 
 let sprite = new THREE.TextureLoader().load(img.src);
-let pointMaterial = new THREE.PointCloudMaterial({
+let pointMaterial = new THREE.PointsMaterial({
     size: 10,
     sizeAttenuation: false,
     map: sprite,
-    wireframe: true,
     alphaTest: 0.5,
     transparent: true,
     vertexColors: THREE.VertexColors
@@ -41,7 +40,7 @@ export function addPoints(points, colors) {
     let geometry = new THREE.Geometry();
     for (let i = 0; i < points.length; i++) {
         geometry.vertices.push(points[i]);
-        geometry.colors.push(new THREE.Color(colors ? colors[i] : 'yellow'));
+        geometry.colors.push(new THREE.Color(colors ? colors[i] : 'white'));
     }
     let pointCloud = new THREE.Points(geometry, pointMaterial);
     scene.add(pointCloud);
@@ -78,7 +77,7 @@ export function removeFromScene(i) {
 function initialize3D() {
     removeFromScene(3);
     // add data
-    colors = vertexes.map(a => a.color);
+    let colors = vertexes.map(a => a.color);
     points = addPoints(vertexes.map(a => a.pos), colors);
     // add clusters
     colors = clusters.map(a => a.color);
@@ -92,7 +91,7 @@ export function initChart(imageData) {
 
 function draw() {
     removeFromScene(4);
-    colors = clusters.map(a => a.color);
+    let colors = clusters.map(a => a.color);
     addPoints(clusters.map(a => a.pos), colors);
     for (let i = 0; i < vertexes.length; i++) {
         setPointColor(points, i, clusters[vertexes[i].cluster].color);
