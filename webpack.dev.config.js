@@ -11,7 +11,7 @@ module.exports = {
         main: './src/index.js'
     },
     output: {
-        path: path.resolve(__dirname, 'docs'),
+        path: path.resolve(__dirname, 'public'),
         filename: 'src/[name].[contentHash].bundle.js'
     },
     devServer: {
