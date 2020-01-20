@@ -8,7 +8,7 @@
 A tool for extracting color palette and color reduction.
 </p>
 
-language : [فارسی](/README.FA.MD) / [en](/README.MD)
+language : [فارسی](/README.fa.md) / [en](/README.md)
 
 </br>
 
