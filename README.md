@@ -31,7 +31,7 @@ After generating a palette from the image, it begins to reconstruct the image wi
 </br>
 
 ## 🏁 How to use
-<!-- - open [project page]() on github -->
+- open [project page](https://alijany.github.io/Color-Cluster/) on github
 - Drag an image to the upload box or upload an image from your system by clicking on the upload box.
 - For determining the palette’s span, you can use the slider to set a value between 5 to 25.
 - Click the “convert image to palette” button and the algorithm will begin to work.
