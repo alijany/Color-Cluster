@@ -19,7 +19,7 @@ module.exports = {
         filename: 'src/[name].bundle.js'
     },
     devServer: {
-        contentBase: './docs',
+        contentBase: './public',
     },
     module: {
         rules: [
