@@ -21,10 +21,24 @@
 @import "../../node_modules/bootstrap/scss/nav";
 @import "../../node_modules/bootstrap/scss/card";
 // @import "../../node_modules/bootstrap/scss/spinners";
-// @import "../../node_modules/bootstrap/scss/alert";
+@import "../../node_modules/bootstrap/scss/toasts";
+@import "../../node_modules/bootstrap/scss/toasts";
+@import "../../node_modules/bootstrap/scss/close";
 // @import "../../node_modules/bootstrap/scss/button-group";
 
 @import "../../node_modules/bootstrap/scss/utilities";
+
+.toast {
+    margin: .5rem;
+    z-index: 9000;
+    top: 0; 
+    right: 0;
+    border: 0;
+}
+
+.toast-header {
+    border-bottom: 0;
+}
 
 .color {
     display: inline-block;
@@ -36,8 +50,8 @@
 }
 
 .color:hover {
-   transform: scale(1.4);
-   transition: transform .3s cubic-bezier(.59,1.95,.38,.27);
+    transform: scale(1.4);
+    transition: transform .3s cubic-bezier(.59, 1.95, .38, .27);
 }
 
 .drop_zone {

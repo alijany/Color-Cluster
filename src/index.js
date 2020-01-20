@@ -4,8 +4,10 @@ import 'tippy.js/dist/tippy.css';
 import './chart.js';
 import { initChart } from './chart';
 import { clusters } from './kmeans';
+import copy from 'copy-to-clipboard';
 // import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tab';
+import 'bootstrap/js/dist/toast';
 
 import tippy from 'tippy.js';
 
@@ -166,6 +168,16 @@ export function appendLabels(labels) {
         }
     });
 }
+
+$('.toast').toast({
+    delay: 3000
+});
+
+$('.colors').on('click', '.color', function (event) {
+    let val = $(event.target).css('background-color');
+    copy(hexOf(val));
+    $('.toast').toast('show');
+});
 
 // ----------------------------------------------------
 
