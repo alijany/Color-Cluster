@@ -47,7 +47,7 @@ After generating a palette from the image, it begins to reconstruct the image wi
 ## 🧱 Build
 - Make sure node js is installed on your computer. (It can be download from [here](https://nodejs.org/en/).)
 - Open the project in cmd and use the command “npm i .” to install the project’s dependencies.
-- by using the command “npm run pro” the project will begin to get constructed in “doc” folder.
+- by using the command “npm run pro” the project will begin to get constructed in “public” folder.
 
 </br>
 
