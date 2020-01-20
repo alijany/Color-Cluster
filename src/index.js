@@ -54,6 +54,8 @@ function imageOnload() {
     context = reducedCanvas.getContext('2d');
     context.drawImage(originalImage, 0, 0, originalImage.width, originalImage.height, 0, 0, width, height);
 
+    $('#image-tab').removeClass('disabled');
+    $('#run').removeClass('disabled');
     $('#image-tab').tab('show');
 
     imageData = context.getImageData(0, 0, canvas.width, canvas.height);

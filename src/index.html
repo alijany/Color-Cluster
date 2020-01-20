@@ -43,8 +43,8 @@
                                         role="tab" aria-controls="upload" aria-selected="true">upload</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="image-tab" data-toggle="tab" href="#image" role="tab"
-                                        aria-controls="image" aria-selected="true">image</a>
+                                    <a class="nav-link disabled" id="image-tab" data-toggle="tab" href="#image"
+                                        role="tab" aria-controls="image" aria-selected="true">image</a>
                                 </li>
                             </ul>
                         </div>
@@ -75,7 +75,8 @@
                         </div>
                         <div class="card-footer text-right">
                             <input id="file-input" type="file" style="display: none;" />
-                            <button id="run" type="button" class="btn btn-primary">Run</button>
+                            <a href="#" id="run" class="btn btn-primary disabled" role="button"
+                                aria-disabled="true">Run</a>
                         </div>
                     </div>
                 </div>
