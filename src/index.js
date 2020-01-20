@@ -5,33 +5,12 @@ import './chart.js';
 import { initChart } from './chart';
 import { clusters } from './kmeans';
 import copy from 'copy-to-clipboard';
-// import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/tab';
 import 'bootstrap/js/dist/toast';
-
 import tippy from 'tippy.js';
 
 import 'img-slider/distr/imgslider.min.js';
 $('.slider').slider({ instructionText: 'drag to compare' });
-
-// import 'bootstrap/js/dist/collapse';
-
-// import RunWorker from './run.worker';
-
-// ***************************
-// function sendToWorker(massage) {
-//     runWorker.postMessage(massage);
-//     return new Promise(resolve => sendToWorker.resolve = resolve);
-// }
-
-// function createWorker() {
-//     runWorker = new RunWorker();
-//     runWorker.onmessage = (response) => sendToWorker.resolve(response.data);
-// }
-// ***************************
-
-//let runWorker;
-//createWorker();
 
 let originalImage = new Image();
 let imageData;
@@ -62,6 +41,7 @@ function imageOnload() {
     initChart(imageData);
 }
 
+// ----------------------------------------------------
 
 export function updateImage(vertexes) {
     let i = 0;
@@ -170,6 +150,8 @@ export function appendLabels(labels) {
         }
     });
 }
+
+// ----------------------------------------------------
 
 $('.toast').toast({
     delay: 3000
