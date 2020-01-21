@@ -57,4 +57,6 @@ After generating a palette from the image, it begins to reconstruct the image wi
 - [ ] Compatible with mobile phones
 - [ ] Color chart
 - [ ] Loading images from url
+- [ ] Option to resize canvas
+- [ ] Btn to download canvas
 
