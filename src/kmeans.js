@@ -16,6 +16,7 @@ function imageDataToVertexes(imageData) {
 
     for (let x = 0; x < imageData.width; x++) {
         for (let y = 0; y < imageData.height; y++) {
+            
             let index = (y * imageData.width + x) * 4;
             let red = imageData.data[index];
             let green = imageData.data[index + 1];
@@ -35,7 +36,7 @@ export function randomCluster() {
 
     for (let i = 0; i < clusterCount; i++) {
         let index = Math.floor(Math.random() * (vertexes.length - 1));
-
+        // TODO: use color direct
         let x = vertexes[index].pos.x;
         let y = vertexes[index].pos.y;
         let z = vertexes[index].pos.z;
@@ -45,7 +46,7 @@ export function randomCluster() {
         clusters.push({
             pos: new THREE.Vector3(x, y, z),
             sum: new THREE.Vector3(0, 0, 0),
-            dataCount: 0,
+            vertexCount: 0,
             label: $('<div></div>').addClass('color').css('background-color', color),
             color: color
         });
@@ -88,14 +89,14 @@ function updateCentroid() {
     for (i = 0; i < vertexes.length; i++) {
         let index = vertexes[i].cluster;
         clusters[index].sum = clusters[index].sum.add(vertexes[i].pos);
-        clusters[index].dataCount += 1;
+        clusters[index].vertexCount += 1;
     }
 
     for (i = 0; i < clusterCount; i++) {
-        if (clusters[i].dataCount)
-            clusters[i].pos = clusters[i].sum.divideScalar(clusters[i].dataCount);
+        if (clusters[i].vertexCount)
+            clusters[i].pos = clusters[i].sum.divideScalar(clusters[i].vertexCount);
         clusters[i].sum = new THREE.Vector3(0, 0, 0);
-        clusters[i].dataCount = 0;
+        clusters[i].vertexCount = 0;
         // update color whit pos
         let x = Math.floor(clusters[i].pos.x) + 127;
         let y = Math.floor(clusters[i].pos.y) + 127;
@@ -122,5 +123,5 @@ export function runKmeans(draw) {
             lastChange = 0;
             clearInterval(loop);
         }
-    }, 100);
+    }, 0);
 }
