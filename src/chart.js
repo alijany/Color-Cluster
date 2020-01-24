@@ -1,10 +1,11 @@
 let THREE = require('three');
 const OrbitControls = require('three-orbit-controls')(THREE);
+let chartContainer = $('#chart-container');
 
 let scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff);
 
-let camera = new THREE.PerspectiveCamera(75, 700 / 500, 0.1, 2000);
+let camera = new THREE.PerspectiveCamera(75, 700 / 500, 0.1, 500);
 camera.position.set(200, 200, 200);
 camera.lookAt(0, 0, 0);
 
@@ -12,7 +13,7 @@ let renderer = new THREE.WebGLRenderer({
     antialias: true
 });
 
-renderer.setSize($('#chart-container').width(), $('#chart-container').height());
+renderer.setSize(chartContainer.width(), chartContainer.height());
 let chart = document.getElementById('chart-container');
 chart.appendChild(renderer.domElement);
 
@@ -121,6 +122,12 @@ let controls = new OrbitControls(camera, chart);
 controls.autoRotate = true;
 controls.autoRotateSpeed = 0.5;
 controls.update();
+
+$(window).on('resize load', function () {
+    renderer.setSize(chartContainer.width(), chartContainer.height());
+    camera.aspect = chartContainer.width() / chartContainer.height();
+    camera.updateProjectionMatrix();
+});
 
 function animate() {
     requestAnimationFrame(animate);
