@@ -5,7 +5,7 @@ let chartContainer = $('#chart-container');
 let scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff);
 
-let camera = new THREE.PerspectiveCamera(75, 700 / 500, 0.1, 500);
+let camera = new THREE.PerspectiveCamera(75, 700 / 500, 0.1, 2000);
 camera.position.set(200, 200, 200);
 camera.lookAt(0, 0, 0);
 

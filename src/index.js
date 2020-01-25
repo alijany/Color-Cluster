@@ -14,13 +14,17 @@ import 'img-slider/distr/imgslider.min.js';
 $('.slider').slider({ instructionText: 'drag to compare' });
 
 let originalImage = new Image();
+
 let imageData;
 let reducedCanvas = document.getElementById('image-canvas');
+let canvas = document.getElementById('original-canvas');
 
-function imageOnload() {
-    let canvas = document.getElementById('original-canvas');
-    let width = $('.tab-content').width();
-    let height = width / originalImage.width * originalImage.height;
+function setImageSize() {
+    let imgHeight = originalImage.height;
+    let imgWidth = originalImage.width;
+
+    let width = $('.tab-content').width() * .45; // TODO: add slider 
+    let height = width / imgWidth * imgHeight;
 
     canvas.width = width;
     canvas.height = height;
@@ -29,10 +33,18 @@ function imageOnload() {
     reducedCanvas.height = height;
 
     let context = canvas.getContext('2d');
-    context.drawImage(originalImage, 0, 0, originalImage.width, originalImage.height, 0, 0, width, height);
+    context.drawImage(originalImage, 0, 0, imgWidth, imgHeight, 0, 0, width, height);
 
     context = reducedCanvas.getContext('2d');
-    context.drawImage(originalImage, 0, 0, originalImage.width, originalImage.height, 0, 0, width, height);
+    context.drawImage(originalImage, 0, 0, imgWidth, imgHeight, 0, 0, width, height);
+
+    return context;
+}
+
+// ----------------------------------------------------
+
+function imageOnload() {
+    let context = setImageSize(originalImage, originalImage);
 
     $('#image-tab').removeClass('disabled');
     $('#run').removeClass('disabled');
@@ -41,6 +53,13 @@ function imageOnload() {
     imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     initChart(imageData);
 }
+
+$(window).on('resize', function () {
+    // TODO: while algo is running
+    let context = setImageSize();
+    imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    initChart(imageData);
+});
 
 // ----------------------------------------------------
 
