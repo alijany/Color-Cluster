@@ -23,7 +23,7 @@ function setImageSize() {
     let imgHeight = originalImage.height;
     let imgWidth = originalImage.width;
 
-    let width = $('.tab-content').width() * .2; // TODO: add slider 
+    let width = $('.tab-content').width() * scale;
     let height = width / imgWidth * imgHeight;
 
     canvas.width = width;
@@ -44,7 +44,7 @@ function setImageSize() {
 // ----------------------------------------------------
 
 function imageOnload() {
-    let context = setImageSize(originalImage, originalImage);
+    let context = setImageSize();
 
     $('#image-tab').removeClass('disabled');
     $('#run').removeClass('disabled');
@@ -152,6 +152,35 @@ $('#cluster-slider').on('input', function (event) {
 });
 
 $('#cluster-slider').on('change', randomCluster);
+
+// scale down slider ---------------------------------
+
+let scale = 0.5; // default
+let scaleLabel = $('#scale');
+
+$('#slider-scale').on('input', function (event) {
+    scale = event.target.value;
+    scaleLabel.html(scale);
+});
+
+$('#slider-scale').on('change', () => {
+    let context = setImageSize();
+    imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    initChart(imageData);
+});
+
+// image render type ---------------------------------
+
+$('#crisp').click(function () {
+    if ($(this).is(':checked'))
+        $('.img-canvas').removeClass('pixelate');
+});
+
+$('#pixelated').click(function () {
+    if ($(this).is(':checked'))
+        $('.img-canvas').addClass('pixelate');
+});
+
 
 // ---------------------------------------------------
 

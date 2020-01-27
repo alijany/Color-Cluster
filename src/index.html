@@ -46,7 +46,62 @@
         <div class="container-fluid flex-grow-1">
             <div class="row justify-content-around h-100 align-items-center">
 
-                <div class="col-5 image-c">
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Options
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="customRange2">Clusters: <span id="clusters">12</span></label>
+                                    <input id="cluster-slider" type="range" class="custom-range" min="2" max="25"
+                                        id="customRange2" value="12">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="customRange3">Image Scale Down: <span id="scale">0.5</span></label>
+                                    <input id="slider-scale" type="range" class="custom-range" min="0.1" max="1"
+                                        id="customRange3" value="0.5" step="0.01">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Image rendering</label>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="crisp" name="render" class="custom-control-input">
+                                        <label class="custom-control-label" for="crisp">crisp edges</label>
+                                    </div>
+                                    <div class="custom-control custom-radio ">
+                                        <input type="radio" id="pixelated" name="render" class="custom-control-input"
+                                            checked>
+                                        <label class="custom-control-label" for="pixelated">pixelated</label>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label>3D Chart</label>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">Enable</label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                        <label class="custom-control-label p-1" for="customCheck2">show Only final
+                                            result</label>
+                                    </div>
+                                </div> -->
+
+                            </form>
+                        </div>
+                        <div class="card-footer text-right">
+                            <a href="#" id="run" class="btn btn-primary disabled" role="button"
+                                aria-disabled="true">Run</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 image-c">
                     <div class="card">
                         <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -73,29 +128,21 @@
 
                             <div class="tab-pane fade position-relative" id="image" role="tabpanel"
                                 aria-labelledby="image-tab">
-                                <canvas class="w-100" id="original-canvas"></canvas>
+                                <canvas class="w-100 img-canvas pixelate" id="original-canvas"></canvas>
                                 <div class="img-overly">
-                                    <canvas class="h-100" id="image-canvas"></canvas>
+                                    <canvas class="h-100 img-canvas pixelate" id="image-canvas"></canvas>
                                 </div>
                                 <div class="slider-btn"></div>
                             </div>
 
                         </div>
-                        <div class="card-footer text-right">
-                            <input id="file-input" type="file" style="display: none;" />
-                            <a href="#" id="run" class="btn btn-primary disabled" role="button"
-                                aria-disabled="true">Run</a>
-                        </div>
+
+                        <input id="file-input" type="file" style="display: none;" />
                     </div>
                 </div>
 
-                <div class="col-6 cluster">
+                <div class="col-4 cluster">
                     <div class="card">
-                        <div class="card-header">
-                            <label for="customRange2">Clusters: <span id="clusters">12</span></label>
-                            <input id="cluster-slider" type="range" class="custom-range" min="5" max="25"
-                                id="customRange2" value="12">
-                        </div>
                         <div class="card-body text-center" style="height: 400px;">
                             <div class="h-100 w-100" id="chart-container"></div>
                         </div>
