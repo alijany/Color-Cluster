@@ -23,7 +23,7 @@ function setImageSize() {
     let imgHeight = originalImage.height;
     let imgWidth = originalImage.width;
 
-    let width = $('.tab-content').width() * .45; // TODO: add slider 
+    let width = $('.tab-content').width() * .2; // TODO: add slider 
     let height = width / imgWidth * imgHeight;
 
     canvas.width = width;
@@ -201,3 +201,27 @@ function hexOf(colorval) {
     }
     return '#' + parts.join('');
 }
+
+// ------------------------------------------------------
+let $sliderBtn = $('.slider-btn');
+let $imgOverly = $('.img-overly');
+let clicking = false;
+
+$('#image').mousedown(function () {
+    clicking = true;
+    $(this).css('cursor', 'e-resize');
+});
+
+$('#image').mouseup(function () {
+    clicking = false;
+    $(this).css('cursor', 'default');
+});
+
+$('#image').mousemove(function (e) {
+    if (clicking == false) return;
+    var offset = e.pageX - $(this).offset().left;
+    if (offset < $(this).width() && offset > 0) {
+        $sliderBtn.css('left', offset);
+        $imgOverly.css('width', offset);
+    }
+});

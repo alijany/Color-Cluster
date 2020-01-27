@@ -28,6 +28,42 @@
 
 @import "../../node_modules/bootstrap/scss/utilities";
 
+.img-overly {
+    position: absolute;
+    width: 50%;
+    overflow: hidden;
+    top: 0;
+    bottom: 6px;
+    left: 0;
+    right: 6px;
+}
+
+.slider-btn {
+    cursor: e-resize;
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    background-color: white;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.slider-btn::after {
+    content: '';
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    background-color: #f8f9fa;
+    top: 50%;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+canvas {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
 .toast {
     margin: .5rem;
     z-index: 9000;

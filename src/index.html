@@ -71,16 +71,13 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade" id="image" role="tabpanel" aria-labelledby="image-tab">
-                                <!-- TODO: make after before slider -->
-                                <div>
-                                    <div style="display: none;">
-                                        <canvas id="original-canvas" style="width: 100%;"></canvas>
-                                    </div>
-                                    <div>
-                                        <canvas id="image-canvas" style="width: 100%;"></canvas>
-                                    </div>
+                            <div class="tab-pane fade position-relative" id="image" role="tabpanel"
+                                aria-labelledby="image-tab">
+                                <canvas class="w-100" id="original-canvas"></canvas>
+                                <div class="img-overly">
+                                    <canvas class="h-100" id="image-canvas"></canvas>
                                 </div>
+                                <div class="slider-btn"></div>
                             </div>
 
                         </div>
