@@ -143,8 +143,30 @@
 
                 <div class="col-4 cluster">
                     <div class="card">
-                        <div class="card-body text-center" style="height: 400px;">
-                            <div class="h-100 w-100" id="chart-container"></div>
+                        <div class="card-header">
+                            <ul class="nav nav-tabs card-header-tabs" id="myTab2" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="chart-tab" data-toggle="tab" href="#chart"
+                                        role="tab" aria-controls="chart" aria-selected="true">3d chart</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pie-chart-tab" data-toggle="tab" href="#pie-chart"
+                                        role="tab" aria-controls="pie-chart" aria-selected="true">color chart</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body tab-content text-center" style="height: 400px;"> 
+
+                            <div class="h-100 tab-pane fade show active" id="chart" role="tabpanel"
+                                aria-labelledby="chart-tab">
+                                <div class="h-100 w-100" id="chart-container"></div>
+                            </div>
+
+                            <div class="tab-pane fade" id="pie-chart" role="tabpanel"
+                                aria-labelledby="pie-chart-tab">
+                                
+                            </div>
+
                         </div>
                         <div class="card-footer">
                             <div class="colors">
