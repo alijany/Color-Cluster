@@ -10,6 +10,8 @@ import 'bootstrap/js/dist/collapse';
 import 'bootstrap/js/dist/toast';
 import tippy from 'tippy.js';
 
+import { addData, removeData } from './colorChart.js';
+
 import 'img-slider/distr/imgslider.min.js';
 $('.slider').slider({ instructionText: 'drag to compare' });
 
