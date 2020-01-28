@@ -1,5 +1,7 @@
 let THREE = require('three');
 import { clusterCount, appendLabels } from './index.js';
+import { addData } from './colorChart.js';
+
 
 export let vertexes = [];
 export let clusters = [];
@@ -16,7 +18,7 @@ function imageDataToVertexes(imageData) {
 
     for (let x = 0; x < imageData.width; x++) {
         for (let y = 0; y < imageData.height; y++) {
-            
+
             let index = (y * imageData.width + x) * 4;
             let red = imageData.data[index];
             let green = imageData.data[index + 1];
@@ -53,6 +55,7 @@ export function randomCluster() {
     }
 
     appendLabels(clusters.map(c => c.label));
+    addData(clusters.map(c => c.vertexCount + 1), clusters.map(c => c.color));
 }
 
 export function initKmeans(imageData) {
@@ -91,6 +94,8 @@ function updateCentroid() {
         clusters[index].sum = clusters[index].sum.add(vertexes[i].pos);
         clusters[index].vertexCount += 1;
     }
+
+    addData(clusters.map(c => c.vertexCount), clusters.map(c => c.color));
 
     for (i = 0; i < clusterCount; i++) {
         if (clusters[i].vertexCount)

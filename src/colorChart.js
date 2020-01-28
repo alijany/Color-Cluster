@@ -26,14 +26,7 @@ let chart = new Chart($('#myChart'), {
 
 export function addData(data, color) {
     let dataset = chart.data.datasets[0];
-    dataset.data.push(data);
-    dataset.backgroundColor.push(color);
-}
-
-export function removeData() {
-    chart.data.datasets[0] = {
-        data: [],
-        backgroundColor: []
-    };
+    dataset.data = data;
+    dataset.backgroundColor = color;
     chart.update();
 }
