@@ -55,7 +55,7 @@ After generating a palette from the image, it begins to reconstruct the image wi
 - [ ] Option to disable the graph while running the algorithm
 - [ ] Responsiveness
 - [ ] Compatible with mobile phones
-- [ ] Color chart
+- [x] Color chart
 - [ ] Loading images from url
 - [ ] Option to resize canvas
 - [ ] Btn to download canvas
