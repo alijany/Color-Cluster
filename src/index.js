@@ -42,14 +42,13 @@ function setImageSize() {
 
 // ----------------------------------------------------
 
-function imageOnload() {
+originalImage.onload = function imageOnload() {
     let context = setImageSize();
-
-    $('#run').removeClass('disabled');
-    
     imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     initChart(imageData);
-}
+};
+
+originalImage.src = '/assets/images/screen-3.jpg';
 
 $(window).on('resize', function () {
     // TODO: while algo is running
@@ -83,7 +82,6 @@ export function updateImage(vertexes) {
 
 let reader = new FileReader();
 reader.addEventListener('load', function (event) {
-    originalImage.onload = imageOnload;
     originalImage.src = event.target.result;
 });
 
@@ -139,7 +137,7 @@ $('.drop_zone').on('dragleave dragexit', function (event) {
 
 // cluster slider ------------------------------------
 
-export let clusterCount = 12; // default
+export let clusterCount = 9; // default
 let clusterLabel = $('#clusters');
 import { randomCluster } from './kmeans';
 

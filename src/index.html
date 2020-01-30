@@ -78,9 +78,9 @@
                     <div class="col-5">
                         <form class="text-secondary">
                             <div class="form-group">
-                                <label for="customRange2">Clusters: <span id="clusters">12</span></label>
+                                <label for="customRange2">Clusters: <span id="clusters">9</span></label>
                                 <input id="cluster-slider" type="range" class="custom-range" min="2" max="25"
-                                    id="customRange2" value="12">
+                                    id="customRange2" value="9">
                             </div>
 
                             <div class="form-group">
@@ -117,7 +117,7 @@
                                 </div>
                             </div>
                             <div class="form-group text-center">
-                                <a href="#" id="run" class="btn mt-2 mx-auto btn-primary disabled" role="button"
+                                <a href="#" id="run" class="btn mt-2 mx-auto btn-primary" role="button"
                                     aria-disabled="true">
                                     Generate Color Palette
                                 </a>
@@ -230,162 +230,7 @@
 
     <input id="file-input" type="file" style="display: none;" />
 
-
-    <!-- <div class="d-flex flex-column vh-100">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="https://alijany.github.io/Color-Cluster/public/index.html">
-                <img src="./assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt="CC">
-                <span class="ml-2">Color Cluster</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="https://github.com/alijany/Color-Cluster" target="_blank"> Github
-                            <span class="sr-only">(current)</span></a>
-                    </li>
-                </ul>
-            </div>
-        </nav> 
-
-        <div class="container-fluid flex-grow-1">
-            <div class="row justify-content-around h-100 align-items-center">
-
-                <div class="col-3">
-                    <div class="card">
-                        <div class="card-header">
-                            Options
-                        </div>
-                        <div class="card-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="customRange2">Clusters: <span id="clusters">12</span></label>
-                                    <input id="cluster-slider" type="range" class="custom-range" min="2" max="25"
-                                        id="customRange2" value="12">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="customRange3">Image Scale Down: <span id="scale">0.5</span></label>
-                                    <input id="slider-scale" type="range" class="custom-range" min="0.1" max="1"
-                                        id="customRange3" value="0.5" step="0.01">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Image rendering</label>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="crisp" name="render" class="custom-control-input">
-                                        <label class="custom-control-label" for="crisp">crisp edges</label>
-                                    </div>
-                                    <div class="custom-control custom-radio ">
-                                        <input type="radio" id="pixelated" name="render" class="custom-control-input"
-                                            checked>
-                                        <label class="custom-control-label" for="pixelated">pixelated</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>3D Chart</label>
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Enable</label>
-                                    </div>
-
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                        <label class="custom-control-label p-1" for="customCheck2">show Only final
-                                            result</label>
-                                    </div>
-                                </div> 
-
-                            </form> 
-                        </div>
-                        <div class="card-footer text-right">
-                            <a href="#" id="run" class="btn btn-primary disabled" role="button"
-                                aria-disabled="true">Run</a> 
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-4 image-c">
-                    <div class="card">
-                        <div class="card-header">
-                            <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="upload-tab" data-toggle="tab" href="#upload"
-                                        role="tab" aria-controls="upload" aria-selected="true">upload</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link disabled" id="image-tab" data-toggle="tab" href="#image"
-                                        role="tab" aria-controls="image" aria-selected="true">image</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-body tab-content text-center">
-
-                            <div class="tab-pane fade show active drop_zone" id="upload" role="tabpanel"
-                                aria-labelledby="upload-tab">
-                                <div id="drop_zone">
-                                    <img src="./assets/Asset1.png" class="rounded mx-auto d-block" alt="upload">
-                                    <p class="card-text text-secondary"><strong>Choose an image</strong> or drag it here
-                                    </p>
-                                </div> 
-                            </div>
-
-                            <div class="tab-pane fade position-relative" id="image" role="tabpanel"
-                                aria-labelledby="image-tab">
-                                <canvas class="w-100 img-canvas pixelate" id="original-canvas"></canvas>
-                                <div class="img-overly">
-                                    <canvas class="h-100 img-canvas pixelate" id="image-canvas"></canvas>
-                                </div>
-                                <div class="slider-btn"></div>
-                            </div> 
-
-                        </div>
-
-                        <input id="file-input" type="file" style="display: none;" />
-                    </div>
-                </div>
-
-                <div class="col-4 cluster">
-                    <div class="card">
-                        <div class="card-header">
-                            <ul class="nav nav-tabs card-header-tabs" id="myTab2" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="chart-tab" data-toggle="tab" href="#chart" role="tab"
-                                        aria-controls="chart" aria-selected="true">3d chart</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pie-chart-tab" data-toggle="tab" href="#pie-chart"
-                                        role="tab" aria-controls="pie-chart" aria-selected="true">color chart</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-body tab-content text-center overflow-hidden" style="height: 400px;">
-
-                            <div class="h-100 tab-pane fade show active" id="chart" role="tabpanel"
-                                aria-labelledby="chart-tab">
-                                <div class="h-100 w-100" id="chart-container"></div>
-                            </div> 
-
-                            <div class="h-100 d-flex align-items-center tab-pane fade" id="pie-chart" role="tabpanel"
-                                aria-labelledby="pie-chart-tab">
-                                <canvas id="myChart"></canvas>
-                            </div> 
-
-                        </div>
-                        <div class="card-footer">
-                            <div class="colors">
-                                <span>no cluster found! please choose an image</span>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+    <img src="./assets/screen-3.jpg" class="d-none" alt="preload">
 
 </body>
 
