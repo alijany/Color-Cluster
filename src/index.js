@@ -10,9 +10,6 @@ import 'bootstrap/js/dist/collapse';
 import 'bootstrap/js/dist/toast';
 import tippy from 'tippy.js';
 
-import 'img-slider/distr/imgslider.min.js';
-$('.slider').slider({ instructionText: 'drag to compare' });
-
 let originalImage = new Image();
 
 let imageData;
