@@ -20,8 +20,8 @@ function setImageSize() {
     let imgHeight = originalImage.height;
     let imgWidth = originalImage.width;
 
-    let width = $('.tab-content').width() * scale;
-    let height = width / imgWidth * imgHeight;
+    let width = Math.floor($('#image').width() * scale);
+    let height = Math.floor(width / imgWidth * imgHeight);
 
     canvas.width = width;
     canvas.height = height;
@@ -29,10 +29,12 @@ function setImageSize() {
     reducedCanvas.width = width;
     reducedCanvas.height = height;
 
-    let context = canvas.getContext('2d');
+    $(reducedCanvas).css('height', $(canvas).height());
+
+    let context = reducedCanvas.getContext('2d');
     context.drawImage(originalImage, 0, 0, imgWidth, imgHeight, 0, 0, width, height);
 
-    context = reducedCanvas.getContext('2d');
+    context = canvas.getContext('2d');
     context.drawImage(originalImage, 0, 0, imgWidth, imgHeight, 0, 0, width, height);
 
     return context;
@@ -43,10 +45,8 @@ function setImageSize() {
 function imageOnload() {
     let context = setImageSize();
 
-    $('#image-tab').removeClass('disabled');
     $('#run').removeClass('disabled');
-    $('#image-tab').tab('show');
-
+    
     imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     initChart(imageData);
 }

@@ -1,6 +1,8 @@
+$primary: #15B3B2;
+$border-radius: .5rem;
 // Required
 @import "node_modules/bootstrap/scss/functions";
-@import "node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
 
 
@@ -11,7 +13,7 @@
 @import "node_modules/bootstrap/scss/grid";
 
 @import "../../node_modules/bootstrap/scss/buttons";
-// @import "../../node_modules/bootstrap/scss/dropdown";
+@import "../../node_modules/bootstrap/scss/media";
 @import "../../node_modules/bootstrap/scss/forms";
 @import "../../node_modules/bootstrap/scss/custom-forms";
 // @import "../../node_modules/bootstrap/scss/list-group";
@@ -33,9 +35,14 @@
     width: 50%;
     overflow: hidden;
     top: 0;
-    bottom: 6px;
-    left: 0;
-    right: 6px;
+    bottom: 0;
+}
+
+.slider-btn-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .slider-btn {
@@ -56,7 +63,8 @@
     position: absolute;
     background-color: #f8f9fa;
     top: 50%;
-    transform: translateX(-50%) rotate(45deg);
+    right: -8px;
+    transform: rotate(45deg);
 }
 
 .pixelate {
@@ -77,59 +85,53 @@
 }
 
 .color {
+    cursor: pointer;
+}
+
+.color div {
     display: inline-block;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 5px;
+    height: 35px;
+    width: 35px;
 }
 
 .color:hover {
-    transform: scale(1.4);
+    transform: scale(1.1);
     transition: transform .3s cubic-bezier(.59, 1.95, .38, .27);
 }
 
 .drop_zone {
     cursor: pointer;
+    border: 2px dashed $gray-500;
 }
 
-// image slide  -------------------------------
-
-.slider {
-    width: 100%;
-    height: auto;
-    padding: 0;
-    position: relative
+.b1 {
+    background-image: url('../assets/Asset2.png'), url('../assets/Asset3.png');
+    background-repeat: no-repeat;
+    background-position: right top, -55px 50%;
+    background-origin: border-box;
+    background-size: 40% auto, 100px auto;
 }
 
-.slider .right.image {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0
+.b2 {
+    background-image: url('../assets/Asset3.png');
+    background-repeat: no-repeat;
+    background-position: -55px 0;
+    background-origin: border-box;
+    background-size: 100px auto;
 }
 
-.slider .left.image {
-    position: relative;
-    z-index: 2;
-    border-right: 3px solid white;
-    margin-right: -5px;
-    overflow: hidden
+.b3 {
+    background-image: url('../assets/Asset3.png');
+    background-repeat: no-repeat;
+    background-position: calc(100% + 50px) 30%;
+    background-origin: border-box;
+    background-size: 100px auto;
 }
 
-.slider .instruction {
-    position: absolute;
-    top: 50%;
-    z-index: 1000;
-    width: 100%;
-}
-
-.slider .instruction p {
-    background: rgba(255, 255, 255, 0.75);
-    display: inline;
-    padding: 7px 15px;
-    border-radius: 5px;
-    font-size: 1em;
-    text-transform: uppercase
+.b4 {
+    background-image: url('../assets/Asset3.png'), url('../assets/Asset4.png');
+    background-repeat: no-repeat;
+    background-position: -30px  50%, bottom right;
+    background-origin: border-box;
+    background-size: 100px auto, 30% auto;
 }

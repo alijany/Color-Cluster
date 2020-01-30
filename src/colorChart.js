@@ -3,8 +3,8 @@ let chart = new Chart($('#myChart'), {
     type: 'doughnut',
     data: {
         datasets: [{
-            data: [],
-            backgroundColor: []
+            data: [1, 1, 1, 1, 1],
+            backgroundColor: ['#f35633', '#29a69e', '#f9e9bb', '#c9dee0']
         }]
     },
     options: {
