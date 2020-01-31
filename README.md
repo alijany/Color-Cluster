@@ -52,11 +52,11 @@ After generating a palette from the image, it begins to reconstruct the image wi
 </br>
 
 ## 🎯 TODO
-- [ ] Option to disable the graph while running the algorithm
-- [ ] Responsiveness
-- [ ] Compatible with mobile phones
+- [x] Option to disable the graph while running the algorithm
+- [x] Responsiveness
+- [x] Compatible with mobile phones
 - [x] Color chart
 - [ ] Loading images from url
-- [ ] Option to resize canvas
+- [x] Option to resize canvas
 - [ ] Btn to download canvas
 
