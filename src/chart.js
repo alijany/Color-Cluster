@@ -34,7 +34,7 @@ function newMaterial(args = {}) {
 // ------------------------------------------------------
 
 export function addPoints(points, colors) {
-    if (!webglDetect)
+    if (!webglDetect || disableChart)
         return;
 
     let geometry = new THREE.Geometry();
@@ -66,7 +66,7 @@ function drawLine(from, to, color) {
 // -------------------------
 
 export function removeFromScene(i) {
-    if (!webglDetect)
+    if (!webglDetect || disableChart)
         return;
 
     let len = scene.children.length - 1;
@@ -93,7 +93,7 @@ export function initChart(imageData) {
 }
 
 function draw() {
-    if (!webglDetect)
+    if (!webglDetect || disableChart)
         return;
 
     removeFromScene(4);
@@ -123,7 +123,7 @@ export function CancelAnimation() {
 // -------------------------
 
 $(window).on('resize load', function () {
-    if (!webglDetect)
+    if (!webglDetect || disableChart)
         return;
 
     renderer.setSize($chartContainer.width(), $chartContainer.width() * .625);
@@ -169,14 +169,14 @@ if (webglDetect) {
         disableChart = $(this).prop('checked');
         if (disableChart) {
             CancelAnimation();
-
+            $('#chart-container').hide();
             $('.chart-guid')
                 .text('Chart is Disabled in image setting')
                 .removeClass('text-muted')
                 .addClass('text-warning');
         } else {
             animate();
-
+            $('#chart-container').show();
             $('.chart-guid')
                 .text('Click and drag to rotate the view')
                 .addClass('text-muted');
