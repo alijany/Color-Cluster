@@ -32,14 +32,7 @@ module.exports = {
             },
             {
                 test: /\.(scss|css)$/i,
-                use: [{
-                    loader: MiniCssExtractPlugin.loader,
-                    options: {
-                        publicPath: (resourcePath, context) => {
-                            return path.relative(path.dirname(resourcePath), context) + '/';
-                        },
-                    }
-                }, 'css-loader', 'postcss-loader', 'sass-loader'],
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
             },
             {
                 test: /\.(js|jsx)$/,
