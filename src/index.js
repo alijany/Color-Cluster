@@ -1,5 +1,4 @@
 import './style/costume.scss';
-import 'tippy.js/dist/tippy.css';
 
 import './chart.js';
 import { initChart } from './chart';
