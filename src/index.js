@@ -48,7 +48,7 @@ originalImage.onload = function imageOnload() {
         location.href = '#b2';
     else
         isDefault = false;
-        
+
     $('.r-massage').show();
 };
 
@@ -59,7 +59,8 @@ $(window).on('resize', function () {
     // TODO: while algo is running / image validation
     let context = setImageSize();
     imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-    initChart(imageData);
+    if (window.innerWidth >= 800)
+        initChart(imageData);
     $('.r-massage').show();
 });
 
