@@ -55,13 +55,16 @@ originalImage.onload = function imageOnload() {
 let isDefault = true;
 originalImage.src = './assets/images/screen-3.jpg';
 
+let width = $(window).width();
 $(window).on('resize', function () {
-    // TODO: while algo is running / image validation
-    let context = setImageSize();
-    imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-    if (window.innerWidth >= 800)
+    if ($(window).width() != width) {
+        width = $(window).width();
+        // TODO: while algo is running / image validation
+        let context = setImageSize();
+        imageData = context.getImageData(0, 0, canvas.width, canvas.height);
         initChart(imageData);
-    $('.r-massage').show();
+        $('.r-massage').show();
+    }
 });
 
 // ----------------------------------------------------
@@ -233,19 +236,20 @@ let $sliderBtn = $('.slider-btn');
 let $imgOverly = $('.img-overly');
 let clicking = false;
 
-$('#image').mousedown(function () {
+$('#image').on('mousedown touchstart', function () {
     clicking = true;
     $(this).css('cursor', 'e-resize');
 });
 
-$('#image').mouseup(function () {
+$('#image').on('mouseup touchend', function () {
     clicking = false;
     $(this).css('cursor', 'default');
 });
 
-$('#image').mousemove(function (e) {
+$('#image').on('mousemove touchmove', function (e) {
     if (clicking == false) return;
-    var offset = e.pageX - $(this).offset().left;
+    let pageX = e.pageX || e.changedTouches[0].pageX;
+    var offset = pageX - $(this).offset().left;
     if (offset < $(this).width() && offset > 0) {
         $sliderBtn.css('left', offset);
         $imgOverly.css('width', offset);
