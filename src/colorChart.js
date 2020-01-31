@@ -1,4 +1,6 @@
 import Chart from 'chart.js';
+import { hexOf } from './index';
+
 let chart = new Chart($('#myChart'), {
     type: 'doughnut',
     data: {
@@ -11,7 +13,7 @@ let chart = new Chart($('#myChart'), {
         tooltips: {
             callbacks: {
                 label: function (tooltipItem, data) {
-                    return data['datasets'][0]['backgroundColor'][tooltipItem['index']];
+                    return hexOf(data['datasets'][0]['backgroundColor'][tooltipItem['index']]);
                 },
                 afterLabel: function (tooltipItem, data) {
                     let dataset = data['datasets'][0];

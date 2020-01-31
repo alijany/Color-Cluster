@@ -1,5 +1,5 @@
 let THREE = require('three');
-import { clusterCount, appendLabels, onlyShowResult } from './index.js';
+import { clusterCount, appendLabels, onlyShowResult, hexOf } from './index.js';
 import { addData } from './colorChart.js';
 
 
@@ -9,6 +9,16 @@ export let clusters = [];
 let step_Num = 0;
 // eslint-disable-next-line no-unused-vars
 let lastChange = 0;
+
+function createLabel(color) {
+    let $color = $(`<div class="mr-2 rounded" style="background-color:${color}"></div>`);
+    let $colorHex = $(`<p class="mb-0 text-secondary">${hexOf(color)}</p>`);
+    let label = $('<div class="color d-inline-flex align-items-center rounded shadow-sm m-2 p-2"></div>')
+        .append($color)
+        .append($colorHex);
+
+    return { $color, $colorHex, label };
+}
 
 
 // ------------------------------------------------------------
@@ -49,7 +59,7 @@ export function randomCluster() {
             pos: new THREE.Vector3(x, y, z),
             sum: new THREE.Vector3(0, 0, 0),
             vertexCount: 0,
-            label: $('<div></div>').addClass('color').css('background-color', color),
+            label: createLabel(color),
             color: color
         });
     }
@@ -108,7 +118,8 @@ function updateCentroid() {
         let z = Math.floor(clusters[i].pos.z) + 127;
         let rgb = `rgb(${x},${y},${z})`;
         clusters[i].color = rgb;
-        clusters[i].label.css('background-color', rgb);
+        clusters[i].label.$color.css('background-color', rgb);
+        clusters[i].label.$colorHex.text(hexOf(rgb));
     }
 }
 

@@ -34,7 +34,7 @@ function newMaterial(args = {}) {
 // ------------------------------------------------------
 
 export function addPoints(points, colors) {
-    if (!webglDetect || disableChart)
+    if (!webglDetect)
         return;
 
     let geometry = new THREE.Geometry();
@@ -43,7 +43,8 @@ export function addPoints(points, colors) {
         geometry.colors.push(new THREE.Color(colors ? colors[i] : 'white'));
     }
     let pointCloud = new THREE.Points(geometry, pointMaterial);
-    scene.add(pointCloud);
+    if (!disableChart)
+        scene.add(pointCloud);
     return pointCloud;
 }
 
@@ -175,6 +176,9 @@ if (webglDetect) {
                 .removeClass('text-muted')
                 .addClass('text-warning');
         } else {
+            if (vertexes[0].cluster !== undefined)
+                draw();
+
             animate();
             $('#chart-container').show();
             $('.chart-guid')

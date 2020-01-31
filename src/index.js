@@ -8,7 +8,6 @@ import copy from 'copy-to-clipboard';
 import 'bootstrap/js/dist/tab';
 import 'bootstrap/js/dist/collapse';
 import 'bootstrap/js/dist/toast';
-import tippy from 'tippy.js';
 
 let originalImage = new Image();
 
@@ -183,15 +182,7 @@ export function appendLabels(labels) {
     let $color = $('.colors');
     $color.text('');
     labels.forEach(label => {
-        $color.append(label);
-    });
-
-    tippy('.color', {
-        content: '',
-        onTrigger: (instance) => {
-            let val = $(instance.reference).css('background-color');
-            instance.setContent(hexOf(val));
-        }
+        $color.append(label.label);
     });
 }
 
@@ -202,8 +193,8 @@ $('.toast').toast({
 });
 
 $('.colors').on('click', '.color', function (event) {
-    let val = $(event.target).css('background-color');
-    copy(hexOf(val));
+    let val = $(event.target).text();
+    copy(val);
     $('.toast').toast('show');
 });
 
@@ -216,8 +207,8 @@ $('#run').on('click', function () {
 
 // -----------------------------------------------------
 
-function hexOf(colorval) {
-    let parts = colorval.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+export function hexOf(color) {
+    let parts = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
     delete (parts[0]);
     for (let i = 1; i <= 3; ++i) {
         parts[i] = parseInt(parts[i]).toString(16);
