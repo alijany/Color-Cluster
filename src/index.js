@@ -44,6 +44,7 @@ originalImage.onload = function imageOnload() {
     imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     initChart(imageData);
     location.href = '#b2';
+    $('.r-massage').show();
 };
 
 originalImage.src = './assets/images/screen-3.jpg';
@@ -53,6 +54,7 @@ $(window).on('resize', function () {
     let context = setImageSize();
     imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     initChart(imageData);
+    $('.r-massage').show();
 });
 
 // ----------------------------------------------------
@@ -160,6 +162,7 @@ $('#slider-scale').on('change', () => {
     let context = setImageSize();
     imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     initChart(imageData);
+    $('.r-massage').show();
 });
 
 // image render type ---------------------------------
@@ -200,8 +203,9 @@ $('.colors').on('click', '.color', function (event) {
 // ----------------------------------------------------
 
 import { run } from './chart';
-$('#run').on('click', function (event) {
+$('.run').on('click', function (event) {
     event.preventDefault();
+    $('.r-massage').hide();
     run();
 });
 
