@@ -13,7 +13,7 @@
 
 <body>
     <div class="b1">
-        <div class="container pb-5 d-flex flex-column vh-100">
+        <div class="container pb-4 d-flex flex-column vh-lg-100">
 
             <nav class="m-4">
                 <div class="d-inline-flex align-items-center">
@@ -25,12 +25,12 @@
             <div class="px-4 flex-grow-1 d-flex flex-column justify-content-around">
                 <div>
                     <img src="./assets/logo.png" class="rounded mx-auto d-block" alt="color cluster"
-                        style="width: 100px;">
+                        style="width: 85px;">
                     <h6 class="text-center m-3 text-primary">Color Cluster</h6>
                     <p class="text-center text-secondary">A tool for extracting color palette from images</p>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-4 p-3 shadow rounded m-3  text-center  text-secondary">
+                    <div class="col-sm-12 col-md-5 col-lg-4 p-3 shadow rounded m-3  text-center  text-secondary">
                         <div class="drop_zone p-4 rounded">
                             <!-- <div id="drop_zone" class="p-3 d-inline-block"> -->
                             <img src="./assets/Asset1.png" style="width: 150px;" class="rounded mx-auto  mb-4 d-block"
@@ -40,7 +40,7 @@
                             <!-- </div> -->
                         </div>
                     </div>
-                    <div class="col-4 d-flex flex-column justify-content-around p-3 shadow rounded m-3">
+                    <div class="col-sm-12 col-md-5 col-lg-4 d-flex flex-column justify-content-around p-3 shadow rounded m-3">
                         <div class="p-3 text-center text-secondary mb-3">
                             <h6 class="card-text">Create color palette from url</h6>
                             <p class="card-text pb-3">Just paste image URL below</p>
@@ -60,7 +60,7 @@
                 <h6 class="text-center text-primary mb-4">Image Setting</h6>
 
                 <div class="row justify-content-around align-items-center">
-                    <div class="col-5">
+                    <div class="col-lg-5 col-sm-12">
                         <div id="image" class="position-relative">
                             <div>
                                 <canvas class="w-100 img-canvas pixelate" id="original-canvas"></canvas>
@@ -75,7 +75,7 @@
                         <p class="text-center text-muted mt-2">Drag slider to compare clustered image</p>
                     </div>
 
-                    <div class="col-5">
+                    <div class="col-lg-5 col-sm-12  pt-4 pt-lg-0">
                         <form class="text-secondary">
                             <div class="form-group">
                                 <label for="customRange2">Clusters: <span id="clusters">9</span></label>
@@ -131,25 +131,20 @@
 
     <div class="b3">
         <div class="container py-4">
-            <div class="px-4 pt-4">
+            <div class="px-sm-0 px-lg-4 pt-4">
                 <h6 class="text-center text-primary">Color Palette</h6>
                 <p class="text-center text-muted mt-2 mb-4">Click on color to copy to clip-board</p>
 
                 <div class="row justify-content-around align-items-center">
 
-                    <div class="col-6">
+                    <div class="col-sm-12 col-lg-6">
                         <div class="" id="pie-chart">
                             <canvas id="myChart"></canvas>
                         </div>
                     </div>
 
-                    <div class="col-6 ">
-                        <div class="colors">
-                            <!-- <div class="color d-inline-flex align-items-center rounded shadow-sm m-2 p-2">
-                                <div class="bg-primary mr-2 rounded"></div>
-                                <p class="mb-0 text-secondary">#85483</p>
-                            </div> -->
-                            <!-- <span>no cluster found! please choose an image</span> -->
+                    <div class="col-sm-12 col-lg-6 pt-5 pt-lg-0">
+                        <div class="colors text-center">
                         </div>
                     </div>
                 </div>
@@ -158,7 +153,7 @@
         </div>
     </div>
 
-    <div class="b4 py-5">
+    <div class="b4 pb-5">
         <div class="container py-4">
             <div class="px-4 pt-4 text-center">
                 <h6 class="text-primary">RGB 3D Chart</h6>
@@ -173,7 +168,7 @@
     <div class="bg-primary">
         <div class="container py-5">
             <div class="row justify-content-between text-light">
-                <div class="col-5 ">
+                <div class="col-12 col-md-5 pb-md-0 pb-4">
                     <h6>About The Color Cluster</h6>
                     <p>
                         Color cluster is a simple tool that can generate a color palette by extracting the main colors
@@ -182,7 +177,7 @@
                         color scheme and reduces the image’s colors to its main colors
                     </p>
                 </div>
-                <div class="col-5 d-flex flex-column justify-content-around">
+                <div class="col-12 col-md-5 d-flex flex-column justify-content-around">
                     <div class="row">
                         <div class="col">
                             <h6>Contact</h6>

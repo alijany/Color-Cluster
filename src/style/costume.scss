@@ -136,3 +136,13 @@ $warning: #FF8640;
     background-origin: border-box;
     background-size: 100px auto, 300px auto;
 }
+
+.vh-lg-100 {
+    height: auto;
+}
+
+@include media-breakpoint-up(sm) {
+    .vh-lg-100 {
+        height: 100vh;
+    }
+}
