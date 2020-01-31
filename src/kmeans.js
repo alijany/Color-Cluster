@@ -1,5 +1,5 @@
 let THREE = require('three');
-import { clusterCount, appendLabels } from './index.js';
+import { clusterCount, appendLabels, onlyShowResult } from './index.js';
 import { addData } from './colorChart.js';
 
 
@@ -121,9 +121,12 @@ export function runKmeans(draw) {
 
             choseClusters();
             updateCentroid();
-            draw();
+            if (!onlyShowResult)
+                draw();
         }
         else {
+            if (onlyShowResult)
+                draw();
             step_Num = 0;
             lastChange = 0;
             clearInterval(loop);

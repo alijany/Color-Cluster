@@ -131,7 +131,7 @@ $border-radius: .5rem;
 .b4 {
     background-image: url('../assets/Asset3.png'), url('../assets/Asset4.png');
     background-repeat: no-repeat;
-    background-position: -30px  50%, bottom right;
+    background-position: -30px 50%, 100% 101%;
     background-origin: border-box;
     background-size: 100px auto, 30% auto;
 }

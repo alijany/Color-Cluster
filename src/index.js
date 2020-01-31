@@ -249,3 +249,10 @@ $('#image').mousemove(function (e) {
         $imgOverly.css('width', offset);
     }
 });
+
+// check box - show only final result
+
+export let onlyShowResult = true;
+$('#customCheck2').change(function(){
+    onlyShowResult = $(this).prop( 'checked');
+});
