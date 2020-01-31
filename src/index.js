@@ -46,7 +46,7 @@ originalImage.onload = function imageOnload() {
     location.href = '#b2';
 };
 
-originalImage.src = '/assets/images/screen-3.jpg';
+originalImage.src = './assets/images/screen-3.jpg';
 
 $(window).on('resize', function () {
     // TODO: while algo is running / image validation

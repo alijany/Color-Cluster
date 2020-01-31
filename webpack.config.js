@@ -8,6 +8,7 @@ const webpack = require('webpack');
 
 const babelConfig = require('./babel.config.js');
 
+// const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -16,7 +17,6 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'public'),
-        publicPath: '/Color-Cluster/',
         filename: 'src/[name].bundle.js'
     },
     devServer: {
@@ -32,7 +32,14 @@ module.exports = {
             },
             {
                 test: /\.(scss|css)$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+                use: [{
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        publicPath: (resourcePath, context) => {
+                            return path.relative(path.dirname(resourcePath), context) + '/';
+                        },
+                    }
+                }, 'css-loader', 'postcss-loader', 'sass-loader'],
             },
             {
                 test: /\.(js|jsx)$/,
@@ -80,8 +87,6 @@ module.exports = {
         new CleanWebpackPlugin(),
         new webpack.ProvidePlugin({
             '$': 'jquery',
-            'jQuery': 'jquery'
-
         }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
