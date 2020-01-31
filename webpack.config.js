@@ -16,7 +16,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'public'),
-        publicPath: /Color-Cluster/,
+        publicPath: '/Color-Cluster/',
         filename: 'src/[name].bundle.js'
     },
     devServer: {
@@ -90,8 +90,6 @@ module.exports = {
             title: 'Output Management'
         })
     ],
-
-    publicPath: /Color-Cluster/,
 
     optimization: {
         minimizer: [
