@@ -43,10 +43,16 @@ originalImage.onload = function imageOnload() {
     let context = setImageSize();
     imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     initChart(imageData);
-    location.href = '#b2';
+
+    if (!isDefault)
+        location.href = '#b2';
+    else
+        isDefault = false;
+        
     $('.r-massage').show();
 };
 
+let isDefault = true;
 originalImage.src = './assets/images/screen-3.jpg';
 
 $(window).on('resize', function () {
@@ -257,5 +263,5 @@ $('#customCheck2').change(function () {
 $('#submit').click(function () {
     let url = $('#url').val();
     originalImage.crossOrigin = 'Anonymous';
-    originalImage.src =url;
+    originalImage.src = url;
 });
