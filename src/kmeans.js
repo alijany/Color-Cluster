@@ -118,8 +118,10 @@ function updateCentroid() {
         let z = Math.floor(clusters[i].pos.z) + 127;
         let rgb = `rgb(${x},${y},${z})`;
         clusters[i].color = rgb;
-        clusters[i].label.$color.css('background-color', rgb);
-        clusters[i].label.$colorHex.text(hexOf(rgb));
+        if (!onlyShowResult) {
+            clusters[i].label.$color.css('background-color', rgb);
+            clusters[i].label.$colorHex.text(hexOf(rgb));
+        }
     }
 }
 
@@ -136,8 +138,13 @@ export function runKmeans(draw) {
                 draw();
         }
         else {
-            if (onlyShowResult)
+            if (onlyShowResult) {
+                for (let i = 0; i < clusterCount; i++) {
+                    clusters[i].label.$color.css('background-color', clusters[i].color);
+                    clusters[i].label.$colorHex.text(hexOf(clusters[i].color));
+                }
                 draw();
+            }
             step_Num = 0;
             lastChange = 0;
             clearInterval(loop);

@@ -43,12 +43,13 @@ originalImage.onload = function imageOnload() {
     let context = setImageSize();
     imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     initChart(imageData);
+    location.href = '#b2';
 };
 
 originalImage.src = '/assets/images/screen-3.jpg';
 
 $(window).on('resize', function () {
-    // TODO: while algo is running
+    // TODO: while algo is running / image validation
     let context = setImageSize();
     imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     initChart(imageData);
@@ -199,7 +200,8 @@ $('.colors').on('click', '.color', function (event) {
 // ----------------------------------------------------
 
 import { run } from './chart';
-$('#run').on('click', function () {
+$('#run').on('click', function (event) {
+    event.preventDefault();
     run();
 });
 
@@ -239,9 +241,17 @@ $('#image').mousemove(function (e) {
     }
 });
 
-// check box - show only final result
+// check box - show only final result---------------
 
 export let onlyShowResult = true;
 $('#customCheck2').change(function () {
     onlyShowResult = $(this).prop('checked');
+});
+
+// on submit image url ----------------------------
+
+$('#submit').click(function () {
+    let url = $('#url').val();
+    originalImage.crossOrigin = 'Anonymous';
+    originalImage.src =url;
 });
