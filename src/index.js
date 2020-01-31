@@ -155,7 +155,10 @@ $('#cluster-slider').on('input', function (event) {
     clusterLabel.html(clusterCount);
 });
 
-$('#cluster-slider').on('change', randomCluster);
+$('#cluster-slider').on('change', () => {
+    $('.r-massage').show();
+    randomCluster();
+});
 
 // scale down slider ---------------------------------
 
