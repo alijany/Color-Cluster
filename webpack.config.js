@@ -32,7 +32,11 @@ module.exports = {
             },
             {
                 test: /\.(scss|css)$/i,
-                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    { loader: 'css-loader' },
+                    { loader: 'sass-loader' }
+                ],
             },
             {
                 test: /\.(js|jsx)$/,
@@ -76,7 +80,7 @@ module.exports = {
     externals: {
     },
     plugins: [
-        new MiniCssExtractPlugin({ filename: 'assets/css/[name].css' }),
+        new MiniCssExtractPlugin({ filename: '[name].css' }),
         new CleanWebpackPlugin(),
         new webpack.ProvidePlugin({
             '$': 'jquery',
