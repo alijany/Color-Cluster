@@ -253,6 +253,6 @@ $('#image').mousemove(function (e) {
 // check box - show only final result
 
 export let onlyShowResult = true;
-$('#customCheck2').change(function(){
-    onlyShowResult = $(this).prop( 'checked');
+$('#customCheck2').change(function () {
+    onlyShowResult = $(this).prop('checked');
 });

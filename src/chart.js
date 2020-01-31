@@ -13,6 +13,8 @@ let chart;
 let pointsCloud;
 let img;
 let controls;
+let disableChart;
+let animationReq;
 let sprite;
 let pointMaterial;
 
@@ -108,10 +110,14 @@ export function run() {
     runKmeans(draw);
 }
 
-function animate() {
-    requestAnimationFrame(animate);
+export function animate() {
+    animationReq = requestAnimationFrame(animate);
     controls.update();
     renderer.render(scene, camera);
+}
+
+export function CancelAnimation() {
+    cancelAnimationFrame(animationReq);
 }
 
 // -------------------------
@@ -125,6 +131,7 @@ $(window).on('resize load', function () {
 });
 
 if (webglDetect) {
+
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xffffff);
 
@@ -157,5 +164,31 @@ if (webglDetect) {
     controls.autoRotateSpeed = 0.5;
     controls.update();
 
+    disableChart = false;
+    $('#customCheck1').change(function () {
+        disableChart = $(this).prop('checked');
+        if (disableChart) {
+            CancelAnimation();
+
+            $('.chart-guid')
+                .text('Chart is Disabled in image setting')
+                .removeClass('text-muted')
+                .addClass('text-warning');
+        } else {
+            animate();
+
+            $('.chart-guid')
+                .text('Click and drag to rotate the view')
+                .addClass('text-muted');
+        }
+    });
+
     animate();
+} else {
+    $('#customCheck1').attr('disabled', true);
+
+    $('.chart-guid')
+        .text('Sorry, your Device does not support WebGL')
+        .removeClass('text-muted')
+        .addClass('text-warning');
 }
