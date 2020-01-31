@@ -5,8 +5,6 @@ import './chart.js';
 import { initChart } from './chart';
 import { clusters } from './kmeans';
 import copy from 'copy-to-clipboard';
-import 'bootstrap/js/dist/tab';
-import 'bootstrap/js/dist/collapse';
 import 'bootstrap/js/dist/toast';
 
 let originalImage = new Image();

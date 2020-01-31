@@ -1,5 +1,6 @@
 import Chart from 'chart.js';
 import { hexOf } from './index';
+import copy from 'copy-to-clipboard';
 
 let chart = new Chart($('#myChart'), {
     type: 'doughnut',
@@ -24,6 +25,17 @@ let chart = new Chart($('#myChart'), {
             displayColors: false
         }
     }
+});
+
+$('#myChart').click(function (evt) {
+    var activePoints = chart.getElementsAtEvent(evt);
+    if (activePoints.length === 0)
+        return;
+    var data = activePoints[0]._chart.data;
+    var datasetIndex = activePoints[0]._datasetIndex;
+    var value = data.datasets[datasetIndex].backgroundColor[activePoints[0]._index];
+    copy(hexOf(value));
+    $('.toast').toast('show');
 });
 
 export function addData(data, color) {
