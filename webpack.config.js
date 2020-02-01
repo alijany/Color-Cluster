@@ -82,12 +82,11 @@ module.exports = {
     externals: {
     },
     plugins: [
-        new CompressionPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production')
-            }
-        }),
+        // new webpack.DefinePlugin({
+        //     'process.env': {
+        //         'NODE_ENV': JSON.stringify('production')
+        //     }
+        // }),
         new MiniCssExtractPlugin({ filename: '[name].css' }),
         new CleanWebpackPlugin(),
         new webpack.ProvidePlugin({
@@ -98,7 +97,8 @@ module.exports = {
             filename: 'index.html',
             chunks: ['main'],
             title: 'Output Management'
-        })
+        }),
+        new CompressionPlugin(),
     ],
 
     optimization: {
