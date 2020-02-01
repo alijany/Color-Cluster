@@ -44,7 +44,10 @@ originalImage.onload = function imageOnload() {
     initChart(imageData);
 
     if (!isDefault)
-        location.href = '#b2';
+        if (navigator.userAgent.match(/Android/i))
+            document.location = '#b2';
+        else
+            window.location.replace('#b2');
     else
         isDefault = false;
 
