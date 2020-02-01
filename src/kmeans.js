@@ -1,4 +1,4 @@
-let THREE = require('three');
+import { Vector3 } from 'three';
 import { clusterCount, appendLabels, onlyShowResult, hexOf } from './index.js';
 import { addData } from './colorChart.js';
 
@@ -36,7 +36,7 @@ function imageDataToVertexes(imageData) {
             // let alpha = imageData.data[index + 3];
 
             vertexes.push({
-                pos: new THREE.Vector3(red - 127, green - 127, blue - 127),
+                pos: new Vector3(red - 127, green - 127, blue - 127),
                 color: 'rgb(' + red + ',' + green + ',' + blue + ')'
             });
         }
@@ -56,8 +56,8 @@ export function randomCluster() {
         let color = `rgb(${x + 127},${y + 127},${z + 127})`;
 
         clusters.push({
-            pos: new THREE.Vector3(x, y, z),
-            sum: new THREE.Vector3(0, 0, 0),
+            pos: new Vector3(x, y, z),
+            sum: new Vector3(0, 0, 0),
             vertexCount: 0,
             label: createLabel(color),
             color: color
@@ -110,7 +110,7 @@ function updateCentroid() {
     for (i = 0; i < clusterCount; i++) {
         if (clusters[i].vertexCount)
             clusters[i].pos = clusters[i].sum.divideScalar(clusters[i].vertexCount);
-        clusters[i].sum = new THREE.Vector3(0, 0, 0);
+        clusters[i].sum = new Vector3(0, 0, 0);
         clusters[i].vertexCount = 0;
         // update color whit pos
         let x = Math.floor(clusters[i].pos.x) + 127;
