@@ -82,11 +82,6 @@ module.exports = {
     externals: {
     },
     plugins: [
-        // new webpack.DefinePlugin({
-        //     'process.env': {
-        //         'NODE_ENV': JSON.stringify('production')
-        //     }
-        // }),
         new MiniCssExtractPlugin({ filename: '[name].css' }),
         new CleanWebpackPlugin(),
         new webpack.ProvidePlugin({
